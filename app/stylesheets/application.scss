@@ -1,0 +1,29 @@
+/*
+ * This is a manifest file that'll be compiled into one single file located at public/assets.
+ * Any CSS and SCSS file within this directory can be referenced here using a relative path.
+ * You're free to add application-wide styles to this file.
+ *
+ * Example import: @import "variables";
+ */
+
+div.browsehappy {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background: rgb(0,0,0);
+  background: rgba(0,0,0,0.8);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#CC000000, endColorstr=#CC000000);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#CC000000, endColorstr=#CC000000)";
+
+  p {
+    background-color: #fff;
+    padding: 20px;
+    margin: 0;
+    text-align: center;
+  }
+}
