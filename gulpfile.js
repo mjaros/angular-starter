@@ -1,5 +1,6 @@
 var path = require('path');
 var del = require('del');
+var os = require('os');
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
@@ -28,6 +29,17 @@ var filters = {
   images: gulpFilter(['*.png', '*.jpg', '*.jpeg']),
   fonts: gulpFilter(['*.eot', '*.svg', '*.ttf', '*.woff'])
 };
+
+var ipAddress;
+var ifaces = os.networkInterfaces();
+for (var dev in ifaces) {
+  var alias = 0;
+  ifaces[dev].forEach(function(details) {
+    if (details.family == 'IPv4' && details.internal === false) {
+      ipAddress = details.address;
+    }
+  });
+}
 
 gulp.task('default', ['clean'], function() {
   gulp.start('watch', 'styles', 'js', 'images', 'fonts', 'vendor', 'templates');
@@ -112,6 +124,7 @@ gulp.task('clean', function(done) {
 
 gulp.task('server', function() {
   connect.server({
+    host: ipAddress || 'localhost',
     root: paths.build,
     livereload: true
   });
